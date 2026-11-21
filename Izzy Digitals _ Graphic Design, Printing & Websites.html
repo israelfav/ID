@@ -1,0 +1,409 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<title>Izzy Digitals | Graphic Design, Printing & Websites</title>
+<meta name="description" content="Graphic design, quality printing and website development for individuals, businesses and event planners. Nationwide delivery.">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Sora:wght@500;700;800&family=DM+Sans:wght@400;500;700&display=swap" rel="stylesheet">
+<style>
+:root{
+  --lav:#EDE9FE; --ink:#1B1035; --orange:#FF8C00; --purple:#5B21B6;
+  --bg:#F8F6FF; --surface:#fff; --text:#1B1035; --muted:#5d5575; --line:#ddd6f5;
+  --head:'Sora',system-ui,sans-serif; --body:'DM Sans',system-ui,sans-serif;
+  box-sizing:border-box; padding-top:env(safe-area-inset-top,0px); padding-bottom:env(safe-area-inset-bottom,0px);
+}
+@media (prefers-color-scheme:dark){:root:not([data-theme="light"]){--bg:#140b29;--surface:#1f1440;--text:#EDE9FE;--muted:#b3a9d6;--line:#352868}}
+:root[data-theme="dark"]{--bg:#140b29;--surface:#1f1440;--text:#EDE9FE;--muted:#b3a9d6;--line:#352868}
+*,*::before,*::after{box-sizing:inherit}
+html{scroll-behavior:smooth;scroll-padding-top:calc(76px + env(safe-area-inset-top,0px))}
+body{margin:0;background:var(--bg);color:var(--text);font:400 1rem/1.65 var(--body);-webkit-font-smoothing:antialiased}
+h1,h2,h3{font-family:var(--head);line-height:1.1;margin:0;letter-spacing:-.02em}
+p{margin:0}
+a{color:inherit}
+.wrap{width:min(1120px,100% - 40px);margin-inline:auto}
+section{padding:clamp(64px,9vw,112px) 0}
+:focus-visible{outline:3px solid var(--orange);outline-offset:3px;border-radius:6px}
+
+/* buttons */
+.btn{display:inline-flex;align-items:center;justify-content:center;gap:.5rem;padding:.9rem 1.5rem;border-radius:999px;font:700 .98rem var(--body);text-decoration:none;border:2px solid transparent;cursor:pointer;transition:transform .2s,background .2s,border-color .2s}
+.btn:hover{transform:translateY(-2px)}
+.btn-orange{background:var(--orange);color:var(--ink)}
+.btn-orange:hover{background:#ffa132}
+.btn-ghost{border-color:rgba(237,233,254,.4);color:var(--lav)}
+.btn-ghost:hover{border-color:var(--lav)}
+.btn-purple{background:var(--purple);color:#fff}
+
+/* header */
+header{position:fixed;inset:0 0 auto;z-index:50;padding-top:env(safe-area-inset-top,0px);background:rgba(27,16,53,.86);backdrop-filter:blur(14px);-webkit-backdrop-filter:blur(14px);border-bottom:1px solid rgba(237,233,254,.1)}
+.nav{display:flex;align-items:center;justify-content:space-between;height:68px}
+.logo{font:800 1.3rem var(--head);color:var(--lav);text-decoration:none;display:flex;align-items:center;gap:.55rem}
+.logo i{width:28px;height:28px;border-radius:8px;background:var(--orange);display:grid;place-items:center;color:var(--ink);font:800 .95rem var(--head);font-style:normal}
+.links{display:flex;align-items:center;gap:1.8rem}
+.links a:not(.btn){color:var(--lav);text-decoration:none;font-weight:500;opacity:.85}
+.links a:not(.btn):hover{opacity:1;color:var(--orange)}
+.links .btn{padding:.6rem 1.2rem}
+.burger{display:none;background:none;border:0;width:44px;height:44px;cursor:pointer;color:var(--lav)}
+.burger span{display:block;width:22px;height:2px;background:currentColor;margin:5px auto;transition:.25s}
+.burger[aria-expanded="true"] span:nth-child(1){transform:translateY(7px) rotate(45deg)}
+.burger[aria-expanded="true"] span:nth-child(2){opacity:0}
+.burger[aria-expanded="true"] span:nth-child(3){transform:translateY(-7px) rotate(-45deg)}
+
+/* hero */
+.hero{background:var(--ink);color:var(--lav);padding:calc(68px + clamp(56px,9vw,110px)) 0 clamp(64px,9vw,110px);position:relative;overflow:hidden}
+.hero::before{content:"";position:absolute;width:560px;height:560px;right:-160px;top:-120px;background:radial-gradient(circle,rgba(91,33,182,.75),transparent 68%)}
+.hero .wrap{display:grid;grid-template-columns:1.1fr .9fr;gap:clamp(32px,5vw,72px);align-items:center;position:relative}
+.hero h1{font-size:clamp(2.5rem,6.2vw,4.6rem);font-weight:800;color:#fff}
+.hero h1 span{display:block;color:var(--orange)}
+.hero p.lead{margin:1.4rem 0 2rem;font-size:1.12rem;max-width:34rem;color:#d4cbf3}
+.cta-row{display:flex;flex-wrap:wrap;gap:.8rem}
+.trust{display:flex;flex-wrap:wrap;gap:.6rem 1.6rem;margin-top:2.2rem;font-size:.92rem;color:#b9aee3}
+.trust b{color:var(--orange)}
+
+/* hero stack: the memorable moment */
+.stack{position:relative;height:420px;max-width:440px;margin-inline:auto;width:100%}
+.sheet{position:absolute;border-radius:18px;box-shadow:0 30px 60px rgba(0,0,0,.4);animation:float 7s ease-in-out infinite}
+.s-web{inset:0 0 auto 0;height:230px;background:var(--lav);color:var(--ink);padding:14px;transform:rotate(-3deg)}
+.s-web .dots{display:flex;gap:6px;margin-bottom:12px}.s-web .dots i{width:10px;height:10px;border-radius:50%;background:var(--purple);opacity:.4}
+.s-web .bar{height:12px;border-radius:6px;background:var(--purple);width:62%;margin-bottom:10px}
+.s-web .bar.sm{width:85%;height:8px;background:#c9bdf3}
+.s-web .bar.btn-mock{width:30%;height:26px;background:var(--orange);border-radius:99px;margin-top:16px}
+.s-card{width:230px;height:134px;right:-6px;top:200px;background:var(--purple);color:#fff;padding:18px;transform:rotate(5deg);animation-delay:-2s}
+.s-card b{font:800 1.15rem var(--head);display:block}.s-card small{opacity:.8}
+.s-card::after{content:"";position:absolute;right:16px;bottom:16px;width:34px;height:34px;border-radius:50%;background:var(--orange)}
+.s-flyer{width:190px;height:250px;left:0;top:170px;background:var(--orange);color:var(--ink);padding:18px;transform:rotate(-6deg);animation-delay:-4s}
+.s-flyer b{font:800 1.5rem/1.05 var(--head);display:block}
+.s-flyer::after{content:"";position:absolute;left:18px;right:18px;bottom:18px;height:56px;border-radius:10px;background:var(--ink);opacity:.9}
+@keyframes float{50%{translate:0 -10px}}
+
+/* section heads */
+.head{max-width:620px;margin-bottom:3rem}
+.head h2{font-size:clamp(1.9rem,4vw,2.9rem);font-weight:800}
+.head p{margin-top:1rem;color:var(--muted);font-size:1.08rem}
+
+/* services */
+.services{display:grid;grid-template-columns:repeat(3,1fr);gap:20px}
+.svc{background:var(--surface);border:1px solid var(--line);border-radius:24px;padding:2rem;display:flex;flex-direction:column;transition:transform .25s,border-color .25s}
+.svc:hover{transform:translateY(-4px);border-color:var(--purple)}
+.svc.hl{background:var(--purple);color:#fff;border-color:var(--purple)}
+.svc.hl p,.svc.hl li{color:#e6defc}
+.ico{width:52px;height:52px;border-radius:16px;background:var(--lav);color:var(--purple);display:grid;place-items:center;margin-bottom:1.3rem}
+.hl .ico{background:var(--orange);color:var(--ink)}
+.ico svg{width:26px;height:26px}
+.svc h3{font-size:1.45rem;margin-bottom:.5rem}
+.svc>p{color:var(--muted)}
+.svc ul{list-style:none;padding:0;margin:1.3rem 0;display:grid;gap:.5rem}
+.svc li{padding-left:1.5rem;position:relative;font-size:.97rem}
+.svc li::before{content:"";position:absolute;left:0;top:.6em;width:9px;height:9px;border-radius:50%;background:var(--orange)}
+.svc .note{margin-top:auto;font-size:.9rem;font-weight:700;color:var(--purple)}
+.hl .note{color:var(--orange)}
+
+/* order paths */
+.paths{background:var(--lav);color:var(--ink)}
+:root[data-theme="dark"] .paths{background:#1f1440;color:var(--text)}
+@media (prefers-color-scheme:dark){:root:not([data-theme="light"]) .paths{background:#1f1440;color:var(--text)}}
+.paths .head p{color:inherit;opacity:.75}
+.tabs{display:flex;flex-wrap:wrap;gap:.6rem;margin-bottom:1.6rem}
+.tab{border:2px solid var(--purple);background:transparent;color:inherit;padding:.65rem 1.2rem;border-radius:999px;font:700 .95rem var(--body);cursor:pointer;transition:.2s}
+.tab[aria-selected="true"]{background:var(--purple);color:#fff}
+.panel{background:var(--surface);color:var(--text);border-radius:24px;padding:clamp(1.5rem,4vw,2.5rem);display:grid;grid-template-columns:1.2fr 1fr;gap:2rem;align-items:center}
+.panel h3{font-size:1.6rem;margin-bottom:.6rem}
+.panel p{color:var(--muted)}
+.steps{list-style:none;padding:0;margin:0;display:grid;gap:.9rem;counter-reset:s}
+.steps li{counter-increment:s;display:flex;gap:.9rem;align-items:center;font-weight:500}
+.steps li::before{content:counter(s);flex:none;width:34px;height:34px;border-radius:50%;background:var(--orange);color:var(--ink);display:grid;place-items:center;font:800 .95rem var(--head)}
+.bulk{margin-top:1.6rem;padding:1.1rem 1.4rem;border-left:4px solid var(--orange);background:var(--surface);border-radius:0 14px 14px 0;color:var(--text)}
+
+/* work */
+.filters{display:flex;flex-wrap:wrap;gap:.5rem;margin-bottom:1.6rem}
+.filters .tab{border-color:var(--line);padding:.5rem 1rem;font-size:.9rem}
+.filters .tab[aria-selected="true"]{border-color:var(--purple)}
+.grid{display:grid;grid-template-columns:repeat(4,1fr);gap:16px}
+.tile{aspect-ratio:1;border-radius:20px;border:2px dashed var(--line);display:grid;place-items:center;text-align:center;padding:1rem;color:var(--muted);font-size:.9rem;background:var(--surface)}
+.tile.on{display:grid}.tile[hidden]{display:none}
+.tile b{display:block;color:var(--purple);font-family:var(--head);margin-bottom:.2rem}
+.tile img{position:absolute;inset:0;width:100%;height:100%;object-fit:cover}
+
+
+/* images */
+.media{position:relative;overflow:hidden;display:grid;place-items:center;text-align:center;color:var(--purple);font:700 .85rem/1.4 var(--head);background:linear-gradient(135deg,var(--lav),#cfc4f6);border-radius:16px}
+.media img{position:absolute;inset:0;width:100%;height:100%;object-fit:cover}
+.svc-img{aspect-ratio:16/10;margin-bottom:1.3rem}
+.hl .media{color:var(--ink);background:linear-gradient(135deg,#ffb347,var(--orange))}
+.about-img{aspect-ratio:16/10;border-radius:20px}
+.svc li.more{font-weight:700;color:var(--orange)}
+.ask{margin-top:2rem;padding:1.2rem 1.5rem;background:var(--surface);border:1px solid var(--line);border-radius:18px;color:var(--muted)}
+.ask b{color:var(--text)}
+.ask a{color:var(--purple);font-weight:700}
+@media (prefers-color-scheme:dark){:root:not([data-theme="light"]) .media{color:var(--ink)}:root:not([data-theme="light"]) .ask a{color:var(--orange)}}
+.tile{position:relative;overflow:hidden}
+
+/* about */
+.about{display:grid;grid-template-columns:1fr 1fr;gap:clamp(2rem,6vw,5rem);align-items:center}
+.about h2{font-size:clamp(1.9rem,4vw,2.9rem);font-weight:800}
+.about p{color:var(--muted);margin-top:1rem;font-size:1.08rem}
+.facts{display:grid;gap:14px}
+.fact{background:var(--surface);border:1px solid var(--line);border-radius:18px;padding:1.2rem 1.5rem;display:flex;gap:1rem;align-items:center}
+.fact b{font:800 1.05rem var(--head);display:block}.fact span{color:var(--muted);font-size:.95rem}
+.fact i{flex:none;width:12px;height:12px;border-radius:50%;background:var(--orange)}
+
+/* contact */
+.contact{background:var(--ink);color:var(--lav)}
+.contact .wrap{display:grid;grid-template-columns:.85fr 1.15fr;gap:clamp(2rem,6vw,5rem)}
+.contact h2{font-size:clamp(1.9rem,4vw,2.9rem);font-weight:800;color:#fff}
+.contact .info p{margin:1rem 0 2rem;color:#c9bff0}
+.contact ul{list-style:none;padding:0;margin:0 0 2rem;display:grid;gap:.8rem}
+.contact li a{text-decoration:none;font-weight:500}.contact li a:hover{color:var(--orange)}
+form{background:rgba(237,233,254,.06);border:1px solid rgba(237,233,254,.15);border-radius:24px;padding:clamp(1.3rem,3vw,2rem);display:grid;grid-template-columns:1fr 1fr;gap:1rem}
+.f{display:grid;gap:.35rem}.f.full{grid-column:1/-1}
+label{font-size:.9rem;font-weight:700}
+input,select,textarea{width:100%;font:inherit;color:#fff;background:rgba(10,4,25,.55);border:1.5px solid rgba(237,233,254,.25);border-radius:12px;padding:.8rem 1rem}
+select option{color:#1B1035}
+input:focus,select:focus,textarea:focus{outline:none;border-color:var(--orange)}
+input.bad,select.bad,textarea.bad{border-color:#ff6b6b}
+.err{color:#ffb4b4;font-size:.85rem;min-height:1em}
+textarea{min-height:110px;resize:vertical}
+.hint{font-size:.85rem;color:#b9aee3}
+
+/* footer */
+footer{background:#0f0823;color:#b9aee3;padding:48px 0 calc(28px + env(safe-area-inset-bottom,0px))}
+.foot{display:grid;grid-template-columns:1.4fr 1fr 1fr;gap:2rem}
+footer h4{color:#fff;font:700 1rem var(--head);margin:0 0 .8rem}
+footer a{display:block;text-decoration:none;margin-bottom:.45rem}footer a:hover{color:var(--orange)}
+.copy{margin-top:2.5rem;padding-top:1.5rem;border-top:1px solid rgba(237,233,254,.12);font-size:.88rem}
+
+/* floating whatsapp */
+.wa{position:fixed;right:18px;bottom:calc(18px + env(safe-area-inset-bottom,0px));z-index:40;width:58px;height:58px;border-radius:50%;background:#25D366;display:grid;place-items:center;box-shadow:0 10px 30px rgba(0,0,0,.3);transition:transform .2s}
+.wa:hover{transform:scale(1.08)}.wa svg{width:30px;height:30px;fill:#fff}
+
+.rv{opacity:0;transform:translateY(18px);transition:opacity .6s,transform .6s}
+.rv.in{opacity:1;transform:none}
+
+@media (max-width:900px){
+  .burger{display:block}
+  .links{position:absolute;top:100%;left:0;right:0;flex-direction:column;align-items:stretch;gap:0;background:var(--ink);padding:.5rem 20px 1.2rem;display:none;border-bottom:1px solid rgba(237,233,254,.1)}
+  .links.open{display:flex}
+  .links a:not(.btn){padding:.85rem 0;border-bottom:1px solid rgba(237,233,254,.08)}
+  .links .btn{margin-top:1rem}
+  .hero .wrap,.about,.contact .wrap,.panel{grid-template-columns:1fr}
+  .services{grid-template-columns:1fr}
+  .grid{grid-template-columns:repeat(2,1fr)}
+  .stack{height:380px}
+  .foot{grid-template-columns:1fr}
+}
+@media (max-width:520px){form{grid-template-columns:1fr}}
+@media (prefers-reduced-motion:reduce){*{animation:none!important;transition:none!important;scroll-behavior:auto!important}.rv{opacity:1;transform:none}}
+</style>
+</head>
+<body>
+
+<header>
+  <div class="wrap nav">
+    <a class="logo" href="#home"><i>iz</i>Izzy Digitals</a>
+    <button class="burger" aria-label="Toggle menu" aria-expanded="false" aria-controls="links"><span></span><span></span><span></span></button>
+    <nav class="links" id="links" aria-label="Main">
+      <a href="#services">Services</a>
+      <a href="#how">How it works</a>
+      <a href="#work">Our work</a>
+      <a href="#about">About</a>
+      <a href="#contact">Contact</a>
+      <a class="btn btn-orange" href="#contact">Get a price</a>
+    </nav>
+  </div>
+</header>
+
+<main id="home">
+<section class="hero">
+  <div class="wrap">
+    <div>
+      <h1>Ideas designed. Quality printed. <span>Websites built.</span></h1>
+      <p class="lead">Izzy Digitals is your one-stop partner for graphic design, printing and web development. We help individuals, businesses, event planners and organisations look professional and get noticed.</p>
+      <div class="cta-row">
+        <a class="btn btn-orange" href="#services">Explore our services</a>
+        <a class="btn btn-ghost" data-wa="Hello Izzy Digitals, I’d like to know the price for my project." href="#">Ask for a price on WhatsApp</a>
+      </div>
+      <div class="trust"><span><b>Nationwide</b> delivery</span><span><b>Bulk</b> orders welcome</span><span><b>Design-only</b> or <b>print-only</b> accepted</span></div>
+    </div>
+    <div class="stack" aria-hidden="true">
+      <div class="sheet s-web"><div class="dots"><i></i><i></i><i></i></div><div class="bar"></div><div class="bar sm"></div><div class="bar sm" style="width:70%"></div><div class="bar btn-mock"></div></div>
+      <div class="sheet s-flyer"><b>Grand<br>Opening</b></div>
+      <div class="sheet s-card"><b>Your Brand</b><small>Business card</small></div>
+    </div>
+  </div>
+</section>
+
+<section id="services">
+  <div class="wrap">
+    <div class="head rv"><h2>Everything your brand needs, under one roof</h2><p>Use one service or combine them. Each is available on its own.</p></div>
+    <div class="services">
+      <article class="svc rv">
+        <div class="media svc-img"><span>Add image:<br>images/graphic-design.jpg</span><img src="images/graphic-design.jpg" alt="Graphic design sample" loading="lazy" onerror="this.remove()"></div>
+        <h3>Graphic design</h3>
+        <p>Eye-catching designs that make your brand, event or project stand out.</p>
+        <ul><li>Flyers, posters and brochures</li><li>Programmes and tickets</li><li>Business cards and ID cards</li><li>T-shirt, cap and bag designs</li><li>Stickers and banners</li><li>Logos and brand identity</li><li class="more">and lots more</li></ul>
+        <span class="note">Design only? No problem. You don’t have to print with us.</span>
+      </article>
+      <article class="svc hl rv">
+        <div class="media svc-img"><span>Add image:<br>images/printing.jpg</span><img src="images/printing.jpg" alt="Printing services sample" loading="lazy" onerror="this.remove()"></div>
+        <h3>Printing services</h3>
+        <p>Sharp, reliable printing for single items or bulk orders.</p>
+        <ul><li>Flyers, brochures and programmes</li><li>ID cards and event tickets</li><li>Banners and stickers</li><li>Custom T-shirts, caps and bags</li><li>Event and promotional materials</li><li>Borderless printing</li><li>Bulk printing at competitive rates</li><li class="more">and lots more</li></ul>
+        <span class="note">Already have a design? Send your print-ready file.</span>
+      </article>
+      <article class="svc rv">
+        <div class="media svc-img"><span>Add image:<br>images/web-development.jpg</span><img src="images/web-development.jpg" alt="Website development sample" loading="lazy" onerror="this.remove()"></div>
+        <h3>Website development</h3>
+        <p>Fast, mobile-friendly websites built around your goals.</p>
+        <ul><li>Business websites</li><li>Landing pages</li><li>Online form and data collection pages</li><li>Domain registration</li><li>Hosting setup</li><li class="more">and lots more</li></ul>
+        <span class="note">Every website is tailored to your needs and budget.</span>
+      </article>
+    </div>
+    <p class="ask rv"><b>Don’t see what you need?</b> Just ask. If it’s design, print or web related, we may be able to help. <a data-wa="Hello Izzy Digitals, I need something that’s not on your list. Can you help?" href="#">Ask us on WhatsApp</a></p>
+  </div>
+</section>
+
+<section class="paths" id="how">
+  <div class="wrap">
+    <div class="head rv"><h2>Pick what you need. Mix and match.</h2><p>Choose a path to see how it works.</p></div>
+    <div class="tabs" role="tablist" aria-label="Order options" id="tabs"></div>
+    <div class="panel rv" id="panel" role="tabpanel" aria-live="polite"></div>
+    <p class="bulk rv"><b>Ordering in bulk?</b> We set the price by quantity, materials, specifications and finishing, so you pay only for what you need.</p>
+  </div>
+</section>
+
+<section id="work">
+  <div class="wrap">
+    <div class="head rv"><h2>Real projects, real results</h2><p>A look at what we’ve made for our clients.</p></div>
+    <div class="filters" id="filters" role="tablist" aria-label="Filter projects"></div>
+    <div class="grid" id="grid"></div>
+  </div>
+</section>
+
+<section id="about" style="padding-top:0">
+  <div class="wrap about">
+    <div class="rv">
+      <h2>Independent, hands-on and easy to work with</h2>
+      <p>Izzy Digitals is an independent creative and digital business that turns ideas into polished designs, quality prints and functional websites.</p>
+      <p>We work with individuals, businesses, event planners and organisations across the country. Our promise is simple: listen to what you need, deliver quality work and keep the process stress-free.</p>
+    </div>
+    <div class="facts rv">
+      <div class="media about-img"><span>Add image:<br>images/about.jpg</span><img src="images/about.jpg" alt="The Izzy Digitals team at work" loading="lazy" onerror="this.remove()"></div>
+      <div class="fact"><i></i><div><b>Listen first</b><span>We start by understanding your goal, audience and deadline.</span></div></div>
+      <div class="fact"><i></i><div><b>Deliver quality</b><span>Clean designs, crisp prints and websites that work on every screen.</span></div></div>
+      <div class="fact"><i></i><div><b>Keep it simple</b><span>Clear prices on WhatsApp and delivery anywhere in the country.</span></div></div>
+    </div>
+  </div>
+</section>
+
+<section class="contact" id="contact">
+  <div class="wrap">
+    <div class="info rv">
+      <h2>Ready to start? Tell us about your project.</h2>
+      <p>Send your details and we’ll reply on WhatsApp with a price for your project.</p>
+      <ul>
+        <li><a data-wa="Hello Izzy Digitals, I’d like to make an enquiry." href="#">WhatsApp: 0814 895 6056</a></li>
+        <li><a href="tel:08148956056">Call: 08148956056</a></li>
+        <li><a href="mailto:hello@izzydigitals.com">Email: hello@izzydigitals.com</a></li>
+        <li><a href="#" target="_blank" rel="noopener">Facebook</a></li>
+        <li><a href="#" target="_blank" rel="noopener">Instagram</a></li>
+        <li>Service area: nationwide delivery</li>
+      </ul>
+    </div>
+    <form id="form" class="rv" novalidate>
+      <div class="f"><label for="name">Name</label><input id="name" required autocomplete="name"><span class="err"></span></div>
+      <div class="f"><label for="contactf">Phone or email</label><input id="contactf" required autocomplete="tel"><span class="err"></span></div>
+      <div class="f"><label for="service">Service needed</label>
+        <select id="service" required><option value="">Select a service</option><option>Design only</option><option>Printing only</option><option>Design + Printing</option><option>Website development</option></select><span class="err"></span></div>
+      <div class="f"><label for="qty">Quantity (for printing)</label><input id="qty" inputmode="numeric" placeholder="e.g. 500"></div>
+      <div class="f"><label for="deadline">Deadline</label><input id="deadline" type="date"></div>
+      <div class="f"><label for="ref">Reference link (optional)</label><input id="ref" placeholder="Link to a file or inspiration"></div>
+      <div class="f full"><label for="details">Project details</label><textarea id="details" required placeholder="Tell us what you need, sizes, materials, colours..."></textarea><span class="err"></span></div>
+      <div class="f full"><button class="btn btn-orange" type="submit">Ask for a price on WhatsApp</button><span class="hint">This opens WhatsApp with your details filled in. You can attach files there.</span></div>
+    </form>
+  </div>
+</section>
+</main>
+
+<footer>
+  <div class="wrap">
+    <div class="foot">
+      <div><a class="logo" href="#home" style="margin-bottom:.8rem"><i>iz</i>Izzy Digitals</a><p>Ideas designed. Quality printed. Websites built. Serving clients nationwide.</p></div>
+      <div><h4>Explore</h4><a href="#services">Services</a><a href="#how">How it works</a><a href="#work">Our work</a><a href="#about">About</a><a href="#contact">Contact</a></div>
+      <div><h4>Connect</h4><a data-wa="Hello Izzy Digitals!" href="#">WhatsApp: 08148956056</a><a href="#" target="_blank" rel="noopener">Facebook</a><a href="#" target="_blank" rel="noopener">Instagram</a></div>
+    </div>
+    <p class="copy">© 2026 Izzy Digitals. All rights reserved.</p>
+  </div>
+</footer>
+
+<a class="wa" data-wa="Hello Izzy Digitals, I’d like to know the price for my project." href="#" aria-label="Chat on WhatsApp"><svg viewBox="0 0 24 24"><path d="M17.5 14.4c-.3-.1-1.7-.8-2-.9-.3-.1-.5-.1-.7.1-.2.3-.8.9-.9 1.1-.2.2-.3.2-.6.1-.3-.1-1.2-.4-2.3-1.4-.9-.8-1.4-1.7-1.6-2-.2-.3 0-.4.1-.6l.4-.5c.1-.2.2-.3.3-.5.1-.2 0-.4 0-.5-.1-.1-.7-1.6-.9-2.2-.2-.6-.5-.5-.7-.5h-.6c-.2 0-.5.1-.8.4-.3.3-1 1-1 2.5s1.1 2.9 1.2 3.1c.1.2 2.1 3.2 5.1 4.5.7.3 1.3.5 1.7.6.7.2 1.4.2 1.9.1.6-.1 1.7-.7 2-1.4.2-.7.2-1.300.2-1.400-.1-.2-.3-.3-.6-.4zM12 2a10 10 0 0 0-8.600 15L2 22l5.200-1.400A10 10 0 1 0 12 2z"/></svg></a>
+
+<script>
+const NUM = "2348148956056";
+const wa = t => `https://wa.me/${NUM}?text=${encodeURIComponent(t)}`;
+document.querySelectorAll("[data-wa]").forEach(a => { a.href = wa(a.dataset.wa); a.target = "_blank"; a.rel = "noopener"; });
+
+/* mobile menu */
+const burger = document.querySelector(".burger"), links = document.getElementById("links");
+burger.addEventListener("click", () => { const o = links.classList.toggle("open"); burger.setAttribute("aria-expanded", o); });
+links.addEventListener("click", e => { if (e.target.tagName === "A") { links.classList.remove("open"); burger.setAttribute("aria-expanded", false); } });
+
+/* order paths */
+const paths = [
+  { id: "Design only", t: "Design only", d: "Need artwork but want to print elsewhere? We design it and hand you the files.", s: ["Tell us what you need", "Get a price on WhatsApp", "Review and approve the design", "Receive your final files"] },
+  { id: "Printing only", t: "Printing only", d: "Already have a design? Send your print-ready file and ask for a price.", s: ["Send your print-ready file", "Get a price based on quantity and finish", "Approve and pay", "We print and deliver nationwide"] },
+  { id: "Website development", t: "Website only", d: "Tell us what you need and we’ll build a fast, mobile-friendly site.", s: ["Share your goals and content", "Get a price for your project", "Review your site and request changes", "Launch with domain and hosting"] },
+  { id: "Design + Printing", t: "Design + Printing", d: "The complete package. We handle the design and printing from start to finish.", s: ["Tell us your idea", "Get one price for both", "Approve the design", "We print and deliver nationwide"] }
+];
+const tabs = document.getElementById("tabs"), panel = document.getElementById("panel");
+function showPath(i) {
+  [...tabs.children].forEach((b, k) => b.setAttribute("aria-selected", k === i));
+  const p = paths[i];
+  panel.innerHTML = `<div><h3>${p.t}</h3><p>${p.d}</p><p style="margin-top:1.4rem"><a class="btn btn-purple" href="#contact" data-pick="${p.id}">Choose this option</a></p></div><ol class="steps">${p.s.map(s => `<li>${s}</li>`).join("")}</ol>`;
+}
+paths.forEach((p, i) => { const b = document.createElement("button"); b.className = "tab"; b.role = "tab"; b.textContent = p.t; b.onclick = () => showPath(i); tabs.appendChild(b); });
+panel.addEventListener("click", e => { const a = e.target.closest("[data-pick]"); if (a) document.getElementById("service").value = a.dataset.pick; });
+showPath(0);
+
+/* portfolio: change the img names below to match your own image files */
+const cats = ["All", "Graphic designs", "Printed materials", "Custom merchandise", "Websites"];
+const work = [
+  { c: "Graphic designs", img: "images/design-1.jpg" }, { c: "Printed materials", img: "images/print-1.jpg" },
+  { c: "Custom merchandise", img: "images/merch-1.jpg" }, { c: "Websites", img: "images/website-1.jpg" },
+  { c: "Graphic designs", img: "images/design-2.jpg" }, { c: "Printed materials", img: "images/print-2.jpg" },
+  { c: "Custom merchandise", img: "images/merch-2.jpg" }, { c: "Websites", img: "images/website-2.jpg" }
+];
+const grid = document.getElementById("grid"), filters = document.getElementById("filters");
+function draw(cat) {
+  [...filters.children].forEach(b => b.setAttribute("aria-selected", b.textContent === cat));
+  grid.innerHTML = work.filter(w => cat === "All" || w.c === cat).map(w =>
+    `<div class="tile"><div><b>${w.c}</b>Add image:<br>${w.img}</div><img src="${w.img}" alt="${w.c} sample" loading="lazy" onerror="this.remove()"></div>`).join("");
+}
+cats.forEach(c => { const b = document.createElement("button"); b.className = "tab"; b.role = "tab"; b.textContent = c; b.onclick = () => draw(c); filters.appendChild(b); });
+draw("All");
+
+/* form -> WhatsApp */
+const form = document.getElementById("form");
+form.addEventListener("submit", e => {
+  e.preventDefault();
+  let ok = true;
+  [["name"], ["contactf"], ["service"], ["details"]].forEach(([id]) => {
+    const el = document.getElementById(id), bad = !el.value.trim();
+    el.classList.toggle("bad", bad);
+    el.parentElement.querySelector(".err").textContent = bad ? "This field is required." : "";
+    if (bad) ok = false;
+  });
+  if (!ok) return;
+  const v = id => document.getElementById(id).value.trim();
+  const msg = [`Hello Izzy Digitals, I’d like to know the price for my project.`, `Name: ${v("name")}`, `Contact: ${v("contactf")}`, `Service: ${v("service")}`,
+    v("qty") && `Quantity: ${v("qty")}`, v("deadline") && `Deadline: ${v("deadline")}`, v("ref") && `Reference: ${v("ref")}`, `Details: ${v("details")}`].filter(Boolean).join("\n");
+  window.open(wa(msg), "_blank", "noopener");
+});
+
+/* reveal on scroll */
+const io = new IntersectionObserver(es => es.forEach(x => { if (x.isIntersecting) { x.target.classList.add("in"); io.unobserve(x.target); } }), { threshold: .12 });
+document.querySelectorAll(".rv").forEach(el => io.observe(el));
+</script>
+</body>
+</html>
